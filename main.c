@@ -9,14 +9,6 @@ int main(int argc, char* argv[]) {
     char s[len+1];
     size_t curr_index = 0;
     for (size_t i = 0; i < len; i++) {
-      if (isspace(word[i]) || word[i] == '-') {
-        if (curr_index > 0 && s[curr_index-1] == '-') {
-          continue;
-        }
-        s[curr_index] = '-';
-        curr_index++;
-        continue;
-      }
       if (word[i] == '.') {
         s[curr_index] = '.';
         curr_index++;
@@ -27,8 +19,18 @@ int main(int argc, char* argv[]) {
         curr_index++;
         continue;
       }
+      if (curr_index > 0 && s[curr_index-1] == '-') {
+        continue;
+      }
+      s[curr_index] = '-';
+      curr_index++;
+      continue;
     }
-    s[curr_index] = '\0';
+    if (s[curr_index - 1] == '-') {
+      s[curr_index - 1] = '\0';
+    } else {
+      s[curr_index] = '\0';
+    }
     puts(s);
   }
 }
