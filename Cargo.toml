@@ -1,0 +1,15 @@
+[package]
+name = "kebab"
+version = "0.0.1"
+edition = "2021"
+
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/takashiidobe/kebab"
+description = "Kebab Cases argv[1]"
+documentation = "https://docs.rs/kebab"
+
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1
